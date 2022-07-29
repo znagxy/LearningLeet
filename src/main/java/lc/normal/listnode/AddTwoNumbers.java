@@ -12,19 +12,48 @@ package main.java.lc.normal.listnode;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class AddTwoNumbers {
-    public class ListNode {
-          int val;
-          ListNode next;
-          ListNode() {}
-          ListNode(int val) { this.val = val; }
-          ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-      }
+
 
     public static void main(String[] args) {
 
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        return new ListNode();
+        ListNode temp = new ListNode(l1.val+ l2.val);
+        while(l1.next!=null && l2.next!=null){
+            ListNode list = new ListNode((l1.next!=null? l1.next.val: 0) + (l2.next!=null? l2.next.val: 0));
+            l1 = l1.next;
+            l2 = l2.next;
+            temp.next = list;
+        }
+
+        ListNode l3 = null;
+        while(temp!=null){
+            if(temp.val>=10){
+                temp.next.val = temp.next.val+1;
+                temp.val = temp.val-10;
+            }
+            if(l3==null){
+                l3 = new ListNode(temp.val);
+            }else{
+
+            }
+
+
+        }
+        return l3;
     }
+
+    private boolean plusOne(int val){
+        if(val>=10) return true;
+        return false;
+    }
+}
+
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode() {}
+    ListNode(int val) { this.val = val; }
+    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
 }
